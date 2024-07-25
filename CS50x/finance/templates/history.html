@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<h2>Transaction History</h2>
+<main class="container py-5 text-center">
+
+    <table class="table table-striped">
+        <thead class="theadlight">
+            <tr>
+                <th>Type</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Transaction Date</th>
+            </tr>
+        </thead>
+       <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.transaction_type }}</td>
+                    <td>{{ transaction.stock_symbol }}</td>
+                    <td>{{ transaction.number_shares }}</td>
+                    <td>{{ transaction.share_price }}</td>
+                    <td>{{ transaction.number_shares * transaction.share_price }}</td>
+                    <td>{{ transaction.transaction_date }}</td>
+                </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
